@@ -4,6 +4,7 @@ import slide02 from "../assets/images/slide02.jpg";
 import slide03 from "../assets/images/slide03.jpg";
 import Button from "./ui/Button";
 import { Link } from "react-router-dom";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 const slides = [
   {
@@ -29,15 +30,22 @@ const slides = [
 function Slider() {
   const [current, setCurrent] = useState(0);
 
+  const nextSlide = () => {
+    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 3000);
+    const interval = setInterval(nextSlide, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="h-[calc(100vh-80px)] overflow-hidden relative" dir="rtl">
+      {/* ALL SLIDES */}
       <div
         className="flex h-full transition-transform duration-1000 ease-in-out"
         style={{ transform: `translateX(${current * 100}vw)` }}
@@ -50,28 +58,47 @@ function Slider() {
               className="w-full h-full object-cover"
             />
 
-            {/* TEXT OVER IMAGE */}
-            <div className="absolute top-1/2 right-8 transform -translate-y-1/2 flex flex-col gap-4 text-right text-white max-w-lg">
+            {/* TEXT */}
+            <div className="absolute top-1/2 right-8 transform -translate-y-1/2 flex flex-col justify-center items-center gap-4 text-center text-white max-w-lg">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl font-semibold">
                 {slide.title}
               </h1>
+
               <h2 className="text-lg sm:text-md md:text-xl lg:text-2xl 2xl:text-4xl">
                 {slide.description}
               </h2>
-          <div className="flex justify-center items-center gap-4 mt-8">
-            <Button className="cursor-pointer bg-purple-800"> 
-              <Link to="/">خرید کنید</Link>
-            </Button>
-            <Button variant="ghost" className="cursor-pointer bg-gray-500">
-              <Link to="/">مشاهده محصولات</Link>
-            </Button>
-          </div>
+
+              {/* BUTTONS */}
+              <div className="flex justify-center items-center gap-4 mt-8">
+                <Button className="cursor-pointer bg-primary">
+                  <Link to="/">خرید کنید</Link>
+                </Button>
+
+                <Button variant="ghost" className="cursor-pointer bg-gray-500">
+                  <Link to="/">مشاهده محصولات</Link>
+                </Button>
+              </div>
             </div>
 
             <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-black/0"></div>
           </div>
         ))}
       </div>
+
+      {/* NAV ARROWS */}
+      <button
+        onClick={prevSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full transition z-20"
+      >
+        <ChevronRight size={28} />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full transition z-20"
+      >
+        <ChevronLeft size={28} />
+      </button>
 
       {/* DOTS */}
       <div className="absolute left-1/2 bottom-8 flex gap-4 -translate-x-1/2">

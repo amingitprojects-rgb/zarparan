@@ -61,12 +61,20 @@ function Navbar() {
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
             <User />
-            <Link to="/login">ورود</Link> /<Link to="/register">ثبت نام</Link>
+            <Link to="/login">ورود</Link> / <Link to="/register">ثبت نام</Link>
           </div>
 
-          <div className="p-2 rounded-full bg-purple-700">
+          {/* CART WITH BADGE */}
+          <div className="relative">
             <Link to="/cart">
-              <ShoppingCart className="text-white" />
+              <div className="p-3 bg-primary rounded-full relative">
+                <ShoppingCart className="text-white w-5 h-5" />
+
+                {/* BADGE */}
+                <div className="absolute -top-1 -right-1 bg-yellow-400 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold shadow">
+                  0
+                </div>
+              </div>
             </Link>
           </div>
         </div>

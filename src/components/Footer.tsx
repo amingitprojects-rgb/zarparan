@@ -13,7 +13,7 @@ export default function Footer() {
           preserveAspectRatio="none"
         >
           <path
-            fill="#FACC15"
+            fill="#fef3c7"
             d="M0,160 C360,240 1080,80 1440,160 L1440,0 L0,0 Z"
           />
         </svg>
@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-          {/* ستون اول */}
+          {/* RIGHT */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-bold text-gray-800 mb-4">زرپران</h3>
             <p className="text-gray-600 text-sm leading-6 max-w-sm">
@@ -35,6 +35,7 @@ export default function Footer() {
             </p>
           </div>
 
+          {/* CENTER */}
           <div className="flex flex-col justify-center items-center">
             <h3 className="text-lg font-bold text-gray-800 mb-4">
               لینک‌های مهم
@@ -63,6 +64,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* LEFT */}
           <div className="flex flex-col items-center">
             <div className="flex justify-center gap-4 mt-4">
               <Link to="#">
@@ -81,6 +83,7 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* BOTTOM */}
         <div className="mt-16 flex flex-col md:flex-row items-center justify-between border-t border-gray-300 pt-6 text-sm text-gray-600">
           <p>© 2025 زرپران - تمامی حقوق محفوظ است.</p>
           <div className="mt-3 md:mt-0 flex gap-4 items-center">

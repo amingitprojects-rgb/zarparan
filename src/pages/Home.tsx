@@ -1,6 +1,6 @@
-import Prices from "@/components/Prices";
 import Slider from "../components/Slider";
 import BestSellers from "@/components/BestSellers";
+import PricesTable from "@/components/PricesTable";
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
         <Slider />
 
         {/* PRICE */}
-        <Prices />
+        <PricesTable />
 
         {/* BEST SELLERS */}
         <BestSellers />

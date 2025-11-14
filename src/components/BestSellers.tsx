@@ -26,7 +26,7 @@ export default function BestSellers() {
 
       <Container className="relative z-10">
         <div className="flex flex-col justify-center items-center py-20 text-center">
-          <div className="flex justify-center items-center gap-2 p-2 rounded-xl text-sm bg-white text-yellow-800 shadow-md">
+          <div className="flex justify-center items-center gap-2 px-4 py-2 rounded-3xl text-sm bg-white text-yellow-800 shadow-md">
             <Star />
             <p>فروشندگان برتر</p>
           </div>
@@ -102,7 +102,7 @@ export default function BestSellers() {
                           </li>
                         ))}
                       </ul>
-                      <Button className="bg-purple-800 text-white rounded-2xl mt-5 hover:bg-purple-900">
+                      <Button className="bg-primary text-white rounded-2xl mt-5 hover:bg-purple-900">
                         مشاهده فروشگاه
                       </Button>
                     </div>
