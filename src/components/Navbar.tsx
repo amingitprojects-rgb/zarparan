@@ -1,33 +1,47 @@
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Menu from "./Menu";
-import { ShoppingCart, User } from "lucide-react";
+import { ShoppingCart, User, ChevronDown } from "lucide-react";
+import ProvincesDropdown from "./ProvincesDropdown";
 
 const navLinks = [
-  {
-    title: "خانه",
-    href: "/",
-  },
-  {
-    title: "محصولات",
-    href: "/products",
-  },
-
-  {
-    title: "بلاگ",
-    href: "/blog",
-  },
-
-  {
-    title: "استان ها",
-    href: "/provinces",
-  },
+  { title: "خانه", href: "/" },
+  { title: "محصولات", href: "/products" },
+  { title: "بلاگ", href: "/blog" },
 ];
 
-function Navbar() {
+const Navbar: React.FC = () => {
   const location = useLocation();
+  const [open, setOpen] = useState(false);
+  const wrapperRef = useRef<HTMLLIElement | null>(null);
+
+  useEffect(() => {
+    const handleOutside = (e: Event) => {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("touchstart", handleOutside);
+    document.addEventListener("keydown", onKey);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("touchstart", handleOutside);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
 
   return (
-    <div className="h-20 bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
+    <header className="h-20 bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       {/* MOBILE */}
       <div className="h-full flex items-center justify-between md:hidden">
         <Link to="/">
@@ -43,30 +57,71 @@ function Navbar() {
           <Link to="/" className="flex items-center gap-3">
             <div className="text-2xl tracking-wide">Zarparan</div>
           </Link>
-          <ul className="hidden md:flex gap-4">
+
+          <ul className="hidden md:flex gap-6 items-center">
             {navLinks.map((item, index) => (
               <li
                 key={index}
-                className={`${
-                  location.pathname === item.href ? "text-yellow-600" : ""
+                className={`cursor-pointer ${
+                  location.pathname === item.href
+                    ? "text-yellow-600"
+                    : "text-gray-700"
                 }`}
               >
                 <Link to={item.href}>{item.title}</Link>
               </li>
             ))}
+
+            {/* PROVINCES DROPDOWN */}
+            <li
+              ref={wrapperRef}
+              className="relative"
+              // role/button semantics handled inside clickable element
+            >
+              <div
+                role="button"
+                tabIndex={0}
+                aria-expanded={open}
+                aria-haspopup="menu"
+                onClick={() => setOpen((v) => !v)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setOpen((v) => !v);
+                  } else if (e.key === "Escape") {
+                    setOpen(false);
+                  }
+                }}
+                className="flex items-center gap-1 cursor-pointer select-none text-gray-700 hover:text-yellow-600"
+              >
+                استان‌ها
+                <ChevronDown size={16} />
+              </div>
+
+              {open && (
+                // ProvincesDropdown خودش position:absolute قرار می‌دهد
+                <ProvincesDropdown />
+              )}
+            </li>
           </ul>
         </div>
 
         {/* LEFT */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 text-gray-700">
             <User />
-            <Link to="/login">ورود</Link> / <Link to="/register">ثبت نام</Link>
+            <Link to="/login" className="hover:text-yellow-600">
+              ورود
+            </Link>
+            <span className="text-gray-300">/</span>
+            <Link to="/register" className="hover:text-yellow-600">
+              ثبت نام
+            </Link>
           </div>
 
           {/* CART WITH BADGE */}
           <div className="relative">
-            <Link to="/cart">
+            <Link to="/cart" aria-label="سبد خرید">
               <div className="p-3 bg-primary rounded-full relative">
                 <ShoppingCart className="text-white w-5 h-5" />
 
@@ -79,8 +134,8 @@ function Navbar() {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
-}
+};
 
 export default Navbar;
