@@ -1,6 +1,7 @@
 // src/pages/register.tsx
 import AuthLayout from "@/components/AuthPage";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const TopPillReg: React.FC<{
   text: string;
@@ -11,6 +12,9 @@ const TopPillReg: React.FC<{
     <div className="mb-6 flex justify-end">
       <div className="relative inline-flex items-center bg-yellow-200 text-yellow-900 rounded-full px-6 py-3 shadow-md">
         <span className="text-sm">{text}</span>
+        <Link to="/login" className="hover:underline">
+          وارد شوید
+        </Link>
         <span className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-8 bg-violet-600 rounded-l-full shadow" />
       </div>
     </div>
@@ -25,14 +29,13 @@ const RegisterForm: React.FC = () => {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: API call
     alert("ثبت نام (شبیه‌سازی)");
   };
 
   return (
     <AuthLayout>
       <div className="bg-[#f2da67] rounded-2xl shadow-2xl p-6 md:p-8 relative">
-        <TopPillReg text="قبلاً ثبت نام کرده اید؟ وارد شوید" />
+        <TopPillReg text="قبلاً ثبت نام کرده اید؟" />
 
         <form onSubmit={onSubmit} className="flex flex-col gap-5">
           <div className="text-right">

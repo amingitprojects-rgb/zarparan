@@ -7,6 +7,7 @@ import Provinces from "./pages/Provinces";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
+import UserPanel from "./pages/UserPanel";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/user-panel" element={<UserPanel />} />
         </Routes>
       </Layout>
     </>

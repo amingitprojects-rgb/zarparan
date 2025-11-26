@@ -11,19 +11,6 @@ import Button from "./ui/Button";
 export default function BestSellers() {
   return (
     <div className="relative bg-[#FACC15] pb-16">
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
-        <svg
-          viewBox="0 0 1440 120"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-[120px]"
-        >
-          <path
-            fill="#FACC15"
-            d="M0,120 C480,0 960,120 1440,0 L1440,120 L0,120 Z"
-          />
-        </svg>
-      </div>
-
       <Container className="relative z-10">
         <div className="flex flex-col justify-center items-center py-20 text-center">
           <div className="flex justify-center items-center gap-2 px-4 py-2 rounded-3xl text-sm bg-white text-yellow-800 shadow-md">

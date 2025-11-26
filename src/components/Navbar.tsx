@@ -109,7 +109,9 @@ const Navbar: React.FC = () => {
         {/* LEFT */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 text-gray-700">
-            <User />
+            <Link to="user-panel">
+              <User />
+            </Link>
             <Link to="/login" className="hover:text-yellow-600">
               ورود
             </Link>
