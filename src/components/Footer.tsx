@@ -5,19 +5,6 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="relative bg-[#FEF3C7] overflow-hidden pt-20 pb-10">
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
-        <svg
-          viewBox="0 0 1440 320"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-[80px] md:h-[120px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="#fef3c7"
-            d="M0,160 C360,240 1080,80 1440,160 L1440,0 L0,0 Z"
-          />
-        </svg>
-      </div>
 
       <Container className="relative z-10">
         <div className="block w-20 bg-white rounded-full shadow-md px-6 py-2 m-auto text-gray-800 font-medium mb-6">

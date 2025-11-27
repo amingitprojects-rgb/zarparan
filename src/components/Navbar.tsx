@@ -41,9 +41,9 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <header className="h-20 bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
+    <header className="h-20 w-full bg-white relative">
       {/* MOBILE */}
-      <div className="h-full flex items-center justify-between md:hidden">
+      <div className="h-full px-8 flex items-center justify-between md:hidden">
         <Link to="/">
           <div className="text-2xl tracking-wide">Zarparan</div>
         </Link>
@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* BIGGER SCREENS */}
-      <div className="hidden md:flex justify-between items-center h-full">
+      <nav className="hidden px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64  md:flex justify-between items-center h-full w-full shadow-md border-b border-b-gray-300">
         {/* RIGHT */}
         <div className="flex items-center gap-12">
           <Link to="/" className="flex items-center gap-3">
@@ -73,11 +73,7 @@ const Navbar: React.FC = () => {
             ))}
 
             {/* PROVINCES DROPDOWN */}
-            <li
-              ref={wrapperRef}
-              className="relative"
-              // role/button semantics handled inside clickable element
-            >
+            <li ref={wrapperRef} className="relative">
               <div
                 role="button"
                 tabIndex={0}
@@ -98,10 +94,7 @@ const Navbar: React.FC = () => {
                 <ChevronDown size={16} />
               </div>
 
-              {open && (
-                // ProvincesDropdown خودش position:absolute قرار می‌دهد
-                <ProvincesDropdown />
-              )}
+              {open && <ProvincesDropdown />}
             </li>
           </ul>
         </div>
@@ -109,7 +102,7 @@ const Navbar: React.FC = () => {
         {/* LEFT */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1 text-gray-700">
-            <Link to="user-panel">
+            <Link to="user-panel" className="ml-2">
               <User />
             </Link>
             <Link to="/login" className="hover:text-yellow-600">
@@ -135,7 +128,7 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 };
