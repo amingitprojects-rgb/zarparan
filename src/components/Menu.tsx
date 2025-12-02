@@ -28,6 +28,11 @@ const navLinks = [
   },
 
   {
+    title: "پنل کاربری",
+    href: "/user-panel",
+  },
+
+  {
     title: "سبد خرید(1)",
     href: "/cart",
   },

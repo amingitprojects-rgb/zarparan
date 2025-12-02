@@ -10,7 +10,7 @@ import Button from "./ui/Button";
 
 export default function BestSellers() {
   return (
-    <div className="relative bg-[#FACC15] pb-16">
+    <div className="relative bg-[#FACC15] pb-16 mt-16">
       <Container className="relative z-10">
         <div className="flex flex-col justify-center items-center py-20 text-center">
           <div className="flex justify-center items-center gap-2 px-4 py-2 rounded-3xl text-sm bg-white text-yellow-800 shadow-md">
