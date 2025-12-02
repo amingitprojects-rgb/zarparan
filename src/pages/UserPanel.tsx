@@ -24,7 +24,7 @@ export default function UserPanel() {
 
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Right Sidebar */}
-        <div className="bg-gray-200 rounded-2xl shadow-sm border p-6 h-fit order-2 md:order-1">
+        <div className="bg-gray-200 rounded-2xl shadow-sm border p-6 h-fit order-1 md:order-1">
           <div className="flex justify-between items-center gap-3 mb-5">
             <div className="flex items-center gap-3">
               <div className="w-14 h-14 rounded-full overflow-hidden">
@@ -112,7 +112,7 @@ export default function UserPanel() {
         </div>
 
         {/* Main Content */}
-        <div className="md:col-span-2 space-y-10 order-1 md:order-2">
+        <div className="md:col-span-2 space-y-10 order-2 md:order-2">
           <div className="border rounded-2xl p-6 h-72 border-yellow-300 bg-[#FFFCF2]">
             <h2 className="mb-4 text-gray-800 font-semibold">مشخصات من</h2>
           </div>
