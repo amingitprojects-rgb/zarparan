@@ -15,9 +15,9 @@ import { NavLink, Outlet } from "react-router-dom";
 export default function UserPanelLayout() {
   return (
     <div className="min-h-screen bg-[#FFFDF7] flex flex-col items-center py-10 px-4 md:px-10">
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="w-full max-w-6xl flex flex-col md:grid md:grid-cols-3 gap-6">
         {/* SIDEBAR */}
-        <div className="bg-gray-200 rounded-2xl shadow-sm border p-6 h-fit">
+        <div className="bg-gray-200 rounded-2xl shadow-sm border p-4 md:p-6 h-fit">
           {/* profile */}
           <div className="flex justify-between items-center gap-3 mb-5">
             <div className="flex items-center gap-3">
@@ -37,109 +37,60 @@ export default function UserPanelLayout() {
 
           {/* MENU */}
           <ul className="space-y-5 mt-8 text-gray-700">
-            <li>
-              <NavLink
-                end
-                to="/user-panel"
-                className={({ isActive }) =>
-                  `flex items-center gap-1 font-bold transition
-        ${isActive ? "text-purple-600" : "text-gray-700"}`
-                }
-              >
-                <span className="font-bold">|</span>
-                <User />
-                پنل کاربری
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/user-panel/my-ads"
-                className={({ isActive }) =>
-                  `flex items-center gap-1 font-bold transition
-        ${isActive ? "text-purple-600" : "text-gray-700"}`
-                }
-              >
-                <span>|</span>
-                <Megaphone />
-                آگهی‌های من
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/user-panel/wallet"
-                className={({ isActive }) =>
-                  `flex items-center gap-1 font-bold transition
-        ${isActive ? "text-purple-600" : "text-gray-700"}`
-                }
-              >
-                <span>|</span>
-                <Wallet />
-                کیف پول من
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/user-panel/new-ad"
-                className={({ isActive }) =>
-                  `flex items-center gap-1 font-bold transition
-        ${isActive ? "text-purple-600" : "text-gray-700"}`
-                }
-              >
-                <span>|</span>
-                <FilePlus />
-                ثبت آگهی
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/user-panel/rules"
-                className={({ isActive }) =>
-                  `flex items-center gap-1 font-bold transition
-        ${isActive ? "text-purple-600" : "text-gray-700"}`
-                }
-              >
-                <span>|</span>
-                <ScrollText />
-                قوانین
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/user-panel/support"
-                className={({ isActive }) =>
-                  `flex items-center gap-1 font-bold transition
-        ${isActive ? "text-purple-600" : "text-gray-700"}`
-                }
-              >
-                <span>|</span>
-                <HelpCircle />
-                پشتیبانی
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/user-panel/authentication"
-                className={({ isActive }) =>
-                  `flex items-center gap-1 font-bold transition
-        ${isActive ? "text-purple-600" : "text-gray-700"}`
-                }
-              >
-                <span>|</span>
-                <ShieldCheck />
-                احراز هویت
-              </NavLink>
-            </li>
+            {[
+              { to: "/user-panel", icon: <User />, label: "پنل کاربری" },
+              {
+                to: "/user-panel/my-ads",
+                icon: <Megaphone />,
+                label: "آگهی‌های من",
+              },
+              {
+                to: "/user-panel/wallet",
+                icon: <Wallet />,
+                label: "کیف پول من",
+              },
+              {
+                to: "/user-panel/new-ad",
+                icon: <FilePlus />,
+                label: "ثبت آگهی",
+              },
+              {
+                to: "/user-panel/rules",
+                icon: <ScrollText />,
+                label: "قوانین",
+              },
+              {
+                to: "/user-panel/support",
+                icon: <HelpCircle />,
+                label: "پشتیبانی",
+              },
+              {
+                to: "/user-panel/authentication",
+                icon: <ShieldCheck />,
+                label: "احراز هویت",
+              },
+            ].map((item) => (
+              <li key={item.to}>
+                <NavLink
+                  end
+                  to={item.to}
+                  className={({ isActive }) =>
+                    `flex items-center gap-1 font-bold transition ${
+                      isActive ? "text-purple-600" : "text-gray-700"
+                    }`
+                  }
+                >
+                  <span>|</span>
+                  {item.icon}
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 w-full overflow-hidden mt-6 md:mt-0">
           <Outlet />
         </div>
       </div>
