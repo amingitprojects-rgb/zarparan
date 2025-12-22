@@ -1,57 +1,103 @@
-import { MenuIcon, X } from "lucide-react";
+"use clinet";
+
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { X, User, ShoppingCart, ChevronLeft, MenuIcon } from "lucide-react";
 
 const navLinks = [
   { title: "خانه", href: "/" },
   { title: "محصولات", href: "/products" },
   { title: "بلاگ", href: "/blog" },
-  { title: "استان‌ها", href: "/provinces" },
-  { title: "ورود", href: "/login" },
+  { title: "استان ها", href: "/provinces" },
   { title: "پنل کاربری", href: "/user-panel" },
-  { title: "سبد خرید(1)", href: "/cart" },
 ];
 
-function Menu() {
+const Menu = () => {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
-    setOpen(false);
-  }, [location.pathname]);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
-    <div className="relative">
-      {/* Toggle Icon */}
-      <div onClick={() => setOpen(!open)} className="cursor-pointer">
-        {open ? (
-          <X width={28} height={28} />
-        ) : (
-          <MenuIcon width={28} height={28} />
-        )}
-      </div>
-
-      {/* MOBILE MENU */}
-      <div
-        className={`
-          fixed left-0 top-20 w-full
-          h-[calc(100vh-80px)]
-          bg-white/30 backdrop-blur-md z-50
-          flex flex-col justify-center items-center gap-8 text-xl
-          transition-all duration-300 ease-in-out
-          ${open ? "opacity-100 visible" : "opacity-0 invisible"}
-        `}
+    <>
+      {/* BUTTON */}
+      <button
+        onClick={() => setOpen(true)}
+        className="md:hidden"
+        aria-label="باز کردن منو"
       >
-        <ul className="flex flex-col gap-8">
-          {navLinks.map((item, index) => (
-            <li key={index}>
-              <Link to={item.href}>{item.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+        <MenuIcon size={36} />
+      </button>
+
+      {/* BACKDROP */}
+      <div
+        onClick={() => setOpen(false)}
+        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-all duration-300
+        ${open ? "opacity-100 visible" : "opacity-0 invisible"}`}
+      />
+
+      {/* DRAWER */}
+      <aside
+        className={`fixed top-0 right-0 z-50 h-full w-[80%] max-w-sm bg-white shadow-2xl
+        transform transition-transform duration-300 ease-in-out
+        ${open ? "translate-x-0" : "translate-x-full"}`}
+      >
+        {/* HEADER */}
+        <div className="h-16 px-4 flex items-center justify-between border-b">
+          <span className="text-lg font-semibold">Zarparan</span>
+          <button onClick={() => setOpen(false)}>
+            <X />
+          </button>
+        </div>
+
+        {/* CONTENT */}
+        <div className="flex flex-col p-4 gap-6">
+          {/* NAV */}
+          <nav className="flex flex-col gap-4">
+            {navLinks.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between text-gray-700 text-base hover:text-yellow-600 transition"
+              >
+                {item.title}
+                <ChevronLeft size={16} />
+              </Link>
+            ))}
+          </nav>
+
+          <hr />
+
+          {/* USER ACTIONS */}
+          <div className="flex flex-col gap-3">
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 text-gray-700 hover:text-yellow-600"
+            >
+              <User size={18} />
+              ورود / ثبت نام
+            </Link>
+
+            <Link
+              to="/cart"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 text-gray-700 hover:text-yellow-600"
+            >
+              <ShoppingCart size={18} />
+              سبد خرید
+            </Link>
+          </div>
+        </div>
+      </aside>
+    </>
   );
-}
+};
 
 export default Menu;
