@@ -3,6 +3,7 @@ import {
   HelpCircle,
   LogOut,
   Megaphone,
+  MessageCircle,
   ScrollText,
   Settings,
   ShieldCheck,
@@ -45,19 +46,19 @@ export default function UserPanelLayout() {
                 label: "آگهی‌های من",
               },
               {
-                to: "/user-panel/wallet",
-                icon: <Wallet />,
-                label: "کیف پول من",
-              },
-              {
                 to: "/user-panel/new-ad",
                 icon: <FilePlus />,
                 label: "ثبت آگهی",
               },
               {
-                to: "/user-panel/rules",
-                icon: <ScrollText />,
-                label: "قوانین",
+                to: "/user-panel/wallet",
+                icon: <Wallet />,
+                label: "کیف پول من",
+              },
+              {
+                to: "/user-panel/chats",
+                icon: <MessageCircle />,
+                label: "چت‌های من",
               },
               {
                 to: "/user-panel/support",
@@ -68,6 +69,11 @@ export default function UserPanelLayout() {
                 to: "/user-panel/authentication",
                 icon: <ShieldCheck />,
                 label: "احراز هویت",
+              },
+              {
+                to: "/user-panel/rules",
+                icon: <ScrollText />,
+                label: "قوانین",
               },
             ].map((item) => (
               <li key={item.to}>

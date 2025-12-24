@@ -11,6 +11,9 @@ import Cart from "./pages/Cart";
 import UserPanelLayout from "./pages/UserPanel";
 import UserDashboard from "./components/user-panel/UserDashboard";
 import WalletPanel from "./components/user-panel/WalletPanel";
+import NewAdPage from "./components/user-panel/new-ad/NewAdPage";
+import MyAdsPage from "./components/user-panel/MyAdsPage";
+import MyChats from "./components/user-panel/MyChats";
 
 
 
@@ -29,7 +32,10 @@ function App() {
         {/* USER PANEL */}
         <Route path="/user-panel" element={<UserPanelLayout />}>
           <Route index element={<UserDashboard />} />
+          <Route path="my-ads" element={<MyAdsPage />} />
           <Route path="wallet" element={<WalletPanel />} />
+          <Route path="new-ad" element={<NewAdPage />} />
+          <Route path="chats" element={<MyChats />} />
         </Route>
       </Routes>
     </Layout>
