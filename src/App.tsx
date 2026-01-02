@@ -14,6 +14,9 @@ import WalletPanel from "./components/user-panel/WalletPanel";
 import NewAdPage from "./components/user-panel/new-ad/NewAdPage";
 import MyAdsPage from "./components/user-panel/MyAdsPage";
 import MyChats from "./components/user-panel/MyChats";
+import Support from "./components/user-panel/Support.";
+import Authentication from "./components/user-panel/Authentication";
+import Rules from "./components/user-panel/Rules";
 
 
 
@@ -36,6 +39,9 @@ function App() {
           <Route path="wallet" element={<WalletPanel />} />
           <Route path="new-ad" element={<NewAdPage />} />
           <Route path="chats" element={<MyChats />} />
+          <Route path="support" element={<Support />} />
+          <Route path="authentication" element={<Authentication />} />
+          <Route path="rules" element={<Rules />} />
         </Route>
       </Routes>
     </Layout>

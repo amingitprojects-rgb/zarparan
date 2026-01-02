@@ -6,7 +6,6 @@ import { initialFormData, type NewAdFormData } from "./types";
 
 export default function NewAdPage() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
-
   const [formData, setFormData] = useState<NewAdFormData>(initialFormData);
 
   return (
@@ -30,9 +29,8 @@ export default function NewAdPage() {
 
       {step === 3 && (
         <StepThree
-          onSubmit={() => {
-            console.log("FINAL DATA 👉", formData);
-          }}
+          onPrev={() => setStep(2)}
+          onSubmit={() => console.log(formData)}
         />
       )}
     </>

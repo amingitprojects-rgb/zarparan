@@ -1,40 +1,30 @@
+import Stepper from "./Stepper";
+import Radio from "./Radio";
+import Box from "./Box";
+import { ImagePlus } from "lucide-react";
 import type {
   NewAdFormData,
-  QualityType,
   SaffronType,
+  QualityType,
   PackagingType,
   SaleType,
 } from "./types";
-import Radio from "./Radio";
-import { ImagePlus } from "lucide-react";
-import Box from "./Box";
 
-interface StepOneProps {
+interface Props {
   data: NewAdFormData;
   setData: React.Dispatch<React.SetStateAction<NewAdFormData>>;
   onNext: () => void;
 }
 
 const saffronTypes: SaffronType[] = ["نگین", "سرگل", "پوشال", "دسته", "سفید"];
-
 const qualityTypes: QualityType[] = ["درجه یک", "درجه دو", "ممتاز", "صادراتی"];
-
 const packagingTypes: PackagingType[] = ["کریستال", "فلزی", "پاکتی", "جعبه‌ای"];
-
-
 const saleTypes: SaleType[] = ["خرد", "عمده"];
 
-export default function StepOne({ data, setData, onNext }: StepOneProps) {
+export default function StepOne({ data, setData, onNext }: Props) {
   return (
     <div className="border border-yellow-300 rounded-2xl bg-[#FFFCF2] p-6">
-      {/* STEPPER */}
-      <div className="flex justify-center items-center gap-6 mb-10 text-sm">
-        <StepCircle active label="مشخصات محصول" />
-        <StepLine />
-        <StepCircle label="اطلاعات تماس" />
-        <StepLine />
-        <StepCircle label="بازبینی نهایی" />
-      </div>
+      <Stepper currentStep={1} />
 
       {/* UPLOAD */}
       <div className="mb-10 grid grid-cols-4 gap-4">
@@ -120,7 +110,6 @@ export default function StepOne({ data, setData, onNext }: StepOneProps) {
             ))}
           </div>
         </div>
-
       </Box>
 
       {/* NEXT */}
@@ -134,30 +123,6 @@ export default function StepOne({ data, setData, onNext }: StepOneProps) {
       </div>
     </div>
   );
-}
-
-/* ---------- helpers ---------- */
-
-function StepCircle({ label, active }: { label: string; active?: boolean }) {
-  return (
-    <div className="flex flex-col items-center gap-1">
-      <div
-        className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm
-        ${active ? "bg-purple-600" : "bg-gray-300"}`}
-      >
-        {active ? "1" : ""}
-      </div>
-      <span
-        className={`text-xs ${active ? "text-purple-600" : "text-gray-400"}`}
-      >
-        {label}
-      </span>
-    </div>
-  );
-}
-
-function StepLine() {
-  return <div className="w-10 h-px bg-gray-300" />;
 }
 
 function UploadBox({ big }: { big?: boolean }) {
