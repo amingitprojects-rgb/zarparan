@@ -99,6 +99,7 @@ export default function UserPanelLayout() {
         <div className="md:col-span-2 w-full overflow-hidden mt-6 md:mt-0">
           <Outlet />
         </div>
+
       </div>
     </div>
   );

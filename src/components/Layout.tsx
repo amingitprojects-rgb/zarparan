@@ -2,6 +2,7 @@ import type React from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -13,6 +14,7 @@ function Layout({ children }: { children: React.ReactNode }) {
     <>
       {!shouldHide && <Navbar />}
       <main>{children}</main>
+      <ScrollToTopButton />
       {!shouldHide && <Footer />}
     </>
   );

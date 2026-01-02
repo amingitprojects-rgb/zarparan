@@ -3,6 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 @font-face {
   font-family: "Vazir";
   src: url(../src/assets/fonts/vazir/Vazir-Medium.eot),
@@ -12,7 +13,7 @@
 }
 
 * {
-    font-family: "Vazir", Arial, Helvetica, sans-serif;
+  font-family: "Vazir", Arial, Helvetica, sans-serif;
 }
 
 @theme inline {
@@ -131,14 +132,11 @@
   }
 }
 
-
 @theme {
-  --color-primary: #7E49EF;
-  --color-yell: #EBC51A;
-  
+  --color-primary: #7e49ef;
+  --color-yell: #ebc51a;
 
   --color-card: hsl(var(--card));
-
 }
 
 @layer base {
@@ -189,7 +187,6 @@
   }
 }
 
-
 #root {
   max-width: 100%;
   margin: 0 auto;
@@ -197,3 +194,16 @@
   text-align: center;
 }
 
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 1.5s infinite;
+}
