@@ -64,7 +64,6 @@ function Slider() {
       className="relative w-full h-[calc(100vh-80px)] overflow-hidden"
       dir="rtl"
     >
-      {/* اسلایدر */}
       <div
         className="flex h-full transition-transform duration-700 ease-in-out flex-row-reverse"
         style={{ transform: `translateX(-${current * 100}%)` }}
@@ -99,7 +98,6 @@ function Slider() {
         ))}
       </div>
 
-      {/* دکمه‌ها */}
       <button
         onClick={prevSlide}
         className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full z-20 hover:bg-black/60 transition"
@@ -113,7 +111,6 @@ function Slider() {
         <ChevronRight size={24} />
       </button>
 
-      {/* ایندیکاتورها */}
       <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20">
         {slides.map((_, index) => (
           <button
