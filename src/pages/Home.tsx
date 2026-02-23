@@ -4,7 +4,7 @@ import PricesTable from "@/components/PricesTable";
 
 function Home() {
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen">
       <main>
         {/* SLIDER */}
         <Slider />

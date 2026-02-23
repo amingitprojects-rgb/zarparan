@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
         {/* RIGHT */}
         <div className="flex items-center gap-12">
           <Link to="/" className="flex items-center gap-3">
-            <div className="text-2xl tracking-wide">Zarparan</div>
+            <div className="text-2xl tracking-wide">Negina</div>
           </Link>
 
           <ul className="hidden md:flex gap-6 items-center">

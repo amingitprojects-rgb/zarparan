@@ -68,7 +68,7 @@ const LoginForm: React.FC = () => {
 
           <button
             type="submit"
-            className="mt-2 w-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold py-3 rounded-2xl shadow-lg hover:scale-[0.995] transition"
+            className="mt-2 w-full bg-linear-to-r from-violet-600 to-indigo-600 text-white font-bold py-3 rounded-2xl shadow-lg hover:scale-[0.995] transition"
           >
             ورود
           </button>

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import slide01 from "../assets/images/slide01.jpg";
-import slide02 from "../assets/images/slide02.jpg";
-import slide03 from "../assets/images/slide03.jpg";
+import slideDesktop01 from "../assets/images/slide01-desktop.webp";
+import slideDesktop002 from "../assets/images/slide02-desktop.webp";
+import slideDesktop003 from "../assets/images/slide03-desktop.webp";
+import slideMobile01 from "../assets/images/slide01-mobile.webp";
+import slideMobile02 from "../assets/images/slide02-mobile.webp";
+import slideMobile03 from "../assets/images/slide03-mobile.webp";
 import Button from "./ui/Button";
 import { Link } from "react-router-dom";
 import { ChevronRight, ChevronLeft } from "lucide-react";
@@ -11,27 +14,40 @@ const slides = [
     id: 1,
     title: "زعفران؛ طلای سرخ ایران",
     description: "بهترین کیفیت زعفران اصیل ایرانی با رنگ و عطر بی‌نظیر",
-    img: slide01,
+    imgDesktop: slideDesktop01,
+    imgMobile: slideMobile01,
   },
   {
     id: 2,
     title: "خواص زعفران",
     description: "افزایش انرژی، بهبود روحیه و تقویت سلامت بدن",
-    img: slide02,
+    imgDesktop: slideDesktop002,
+    imgMobile: slideMobile02,
   },
   {
     id: 3,
     title: "تجربه لذت‌بخش",
     description: "طعم و رنگ زعفران اصیل را در آشپزی و نوشیدنی‌ها تجربه کنید",
-    img: slide03,
+    imgDesktop: slideDesktop003,
+    imgMobile: slideMobile03,
   },
 ];
 
 function Slider() {
   const [current, setCurrent] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const nextSlide = () => {
-    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
@@ -39,84 +55,77 @@ function Slider() {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000);
+    const interval = setInterval(nextSlide, 4000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="h-[calc(100vh-80px)] overflow-hidden relative" dir="rtl">
-      {/* ALL SLIDES */}
+    <section
+      className="relative w-full h-[calc(100vh-80px)] overflow-hidden"
+      dir="rtl"
+    >
+      {/* اسلایدر */}
       <div
-        className="flex h-full transition-transform duration-1000 ease-in-out"
-        style={{ transform: `translateX(${current * 100}vw)` }}
+        className="flex h-full transition-transform duration-700 ease-in-out flex-row-reverse"
+        style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {slides.map((slide) => (
-          <div key={slide.id} className="flex-none w-screen h-full relative">
+          <div key={slide.id} className="w-full shrink-0 h-full relative">
             <img
-              src={slide.img}
-              alt="slider"
-              className="w-full h-full object-cover"
+              src={isMobile ? slide.imgMobile : slide.imgDesktop}
+              alt={slide.title}
+              className="w-full h-full object-cover object-center transition-all duration-500"
             />
-
-            {/* TEXT */}
-            <div className="absolute top-1/2 right-8 transform -translate-y-1/2 flex flex-col justify-center items-center gap-4 text-center text-white max-w-lg">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl font-semibold">
+            <div className="absolute inset-0 bg-linear-to-l from-black/50 to-black/10" />
+            <div className="absolute top-1/2 right-5 md:right-10 -translate-y-1/2 text-white z-10 max-w-lg px-4">
+              <h1 className="text-3xl md:text-6xl font-bold mb-4 leading-snug">
                 {slide.title}
               </h1>
-
-              <h2 className="text-lg sm:text-md md:text-xl lg:text-2xl 2xl:text-4xl">
-                {slide.description}
-              </h2>
-
-              {/* BUTTONS */}
-              <div className="flex justify-center items-center gap-4 mt-8">
-                <Button className="cursor-pointer bg-primary">
-                  <Link to="/">خرید کنید</Link>
+              <p className="text-base md:text-xl mb-6">{slide.description}</p>
+              <div className="flex gap-3 md:gap-4 flex-wrap">
+                <Button asChild className="bg-primary">
+                  <Link to="/ads">خرید کنید</Link>
                 </Button>
-
-                <Button variant="ghost" className="cursor-pointer bg-gray-500">
-                  <Link to="/">مشاهده محصولات</Link>
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="bg-white/20 backdrop-blur"
+                >
+                  <Link to="/ads">مشاهده محصولات</Link>
                 </Button>
               </div>
             </div>
-
-            <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-black/0"></div>
           </div>
         ))}
       </div>
 
-      {/* NAV ARROWS */}
+      {/* دکمه‌ها */}
       <button
         onClick={prevSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full transition z-20"
+        className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full z-20 hover:bg-black/60 transition"
       >
-        <ChevronRight size={28} />
+        <ChevronLeft size={24} />
       </button>
-
       <button
         onClick={nextSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-3 rounded-full transition z-20"
+        className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full z-20 hover:bg-black/60 transition"
       >
-        <ChevronLeft size={28} />
+        <ChevronRight size={24} />
       </button>
 
-      {/* DOTS */}
-      <div className="absolute left-1/2 bottom-8 flex gap-4 -translate-x-1/2">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
+      {/* ایندیکاتورها */}
+      <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20">
+        {slides.map((_, index) => (
+          <button
+            key={index}
             onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full ring-1 ring-white cursor-pointer flex justify-center items-center ${
-              current === index ? "scale-150" : ""
+            className={`w-3 h-3 rounded-full transition-transform ${
+              current === index ? "bg-white scale-125" : "bg-white/50"
             }`}
-          >
-            {current === index && (
-              <div className="w-2 h-2 bg-white rounded-full"></div>
-            )}
-          </div>
+          />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

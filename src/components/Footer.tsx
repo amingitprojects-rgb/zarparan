@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
           {/* RIGHT */}
           <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">زرپران</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-4">نگینا</h3>
             <p className="text-gray-600 text-sm leading-6 max-w-sm">
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله
