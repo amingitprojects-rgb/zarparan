@@ -3,10 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 @font-face {
   font-family: "Vazir";
-  src: url(../src/assets/fonts/vazir/Vazir-Medium.eot),
+  src:
+    url(../src/assets/fonts/vazir/Vazir-Medium.eot),
     url(../src/assets/fonts/vazir/Vazir-Medium.ttf),
     url(../src/assets/fonts/vazir/Vazir-Medium.woff),
     url(../src/assets/fonts/vazir/Vazir-Medium.woff2);
@@ -162,7 +162,9 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 }
 
@@ -206,4 +208,17 @@
 
 .animate-bounce-slow {
   animation: bounce-slow 1.5s infinite;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.25s ease-out;
 }

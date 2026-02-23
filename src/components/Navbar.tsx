@@ -6,6 +6,7 @@ import ProvincesDropdown from "./ProvincesDropdown";
 
 const navLinks = [
   { title: "خانه", href: "/" },
+  { title: "آگهی ها", href: "/ads" },
   { title: "محصولات", href: "/products" },
   { title: "بلاگ", href: "/blog" },
 ];
@@ -64,7 +65,7 @@ const Navbar: React.FC = () => {
                 key={index}
                 className={`cursor-pointer ${
                   location.pathname === item.href
-                    ? "text-yellow-600"
+                    ? "text-purple-600"
                     : "text-gray-700"
                 }`}
               >
@@ -88,7 +89,7 @@ const Navbar: React.FC = () => {
                     setOpen(false);
                   }
                 }}
-                className="flex items-center gap-1 cursor-pointer select-none text-gray-700 hover:text-yellow-600"
+                className="flex items-center gap-1 cursor-pointer select-none text-gray-700 hover:text-purple-600"
               >
                 استان‌ها
                 <ChevronDown size={16} />

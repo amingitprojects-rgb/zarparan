@@ -17,6 +17,7 @@ import MyChats from "./components/user-panel/MyChats";
 import Support from "./components/user-panel/Support.";
 import Authentication from "./components/user-panel/Authentication";
 import Rules from "./components/user-panel/Rules";
+import AdsPage from "./pages/Ads";
 
 
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/provinces" element={<Provinces />} />
+        <Route path="/ads" element={<AdsPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart />} />

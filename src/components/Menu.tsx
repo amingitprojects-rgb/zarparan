@@ -1,11 +1,10 @@
-"use clinet";
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { X, User, ShoppingCart, ChevronLeft, MenuIcon } from "lucide-react";
 
 const navLinks = [
   { title: "خانه", href: "/" },
+  { title: "آگهی ها", href: "/ads" },
   { title: "محصولات", href: "/products" },
   { title: "بلاگ", href: "/blog" },
   { title: "استان ها", href: "/provinces" },
