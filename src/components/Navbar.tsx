@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
       {/* MOBILE */}
       <div className="h-full px-8 flex items-center justify-between md:hidden">
         <Link to="/">
-          <div className="text-2xl tracking-wide">Zarparan</div>
+          <div className="text-2xl tracking-wide">Negina</div>
         </Link>
         <Menu />
       </div>

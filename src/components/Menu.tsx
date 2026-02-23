@@ -48,7 +48,7 @@ const Menu = () => {
       >
         {/* HEADER */}
         <div className="h-16 px-4 flex items-center justify-between border-b">
-          <span className="text-lg font-semibold">Zarparan</span>
+          <span className="text-lg font-semibold">Negina</span>
           <button onClick={() => setOpen(false)}>
             <X />
           </button>
