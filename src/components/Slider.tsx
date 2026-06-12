@@ -99,13 +99,13 @@ function Slider() {
       </div>
 
       <button
-        onClick={prevSlide}
+        onClick={nextSlide}
         className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full z-20 hover:bg-black/60 transition"
       >
         <ChevronLeft size={24} />
       </button>
       <button
-        onClick={nextSlide}
+        onClick={prevSlide}
         className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 md:p-3 rounded-full z-20 hover:bg-black/60 transition"
       >
         <ChevronRight size={24} />
