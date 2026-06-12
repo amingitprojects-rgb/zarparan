@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { X, User, ShoppingCart, ChevronLeft, MenuIcon } from "lucide-react";
+import Logo from "./Logo";
 
 const navLinks = [
   { title: "خانه", href: "/" },
@@ -48,7 +49,7 @@ const Menu = () => {
       >
         {/* HEADER */}
         <div className="h-16 px-4 flex items-center justify-between border-b">
-          <span className="text-lg font-semibold">Negina</span>
+          <Logo />
           <button onClick={() => setOpen(false)}>
             <X />
           </button>
