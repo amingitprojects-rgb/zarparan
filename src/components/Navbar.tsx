@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Menu from "./Menu";
 import { ShoppingCart, User, ChevronDown } from "lucide-react";
 import ProvincesDropdown from "./ProvincesDropdown";
+import Logo from "./Logo";
 
 const navLinks = [
   { title: "خانه", href: "/" },
@@ -45,9 +46,7 @@ const Navbar: React.FC = () => {
     <header className="h-20 w-full bg-white relative">
       {/* MOBILE */}
       <div className="h-full px-8 flex items-center justify-between md:hidden">
-        <Link to="/">
-          <div className="text-2xl tracking-wide">Negina</div>
-        </Link>
+        <Logo />
         <Menu />
       </div>
 
@@ -55,9 +54,7 @@ const Navbar: React.FC = () => {
       <nav className="hidden px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64  md:flex justify-between items-center h-full w-full shadow-md border-b border-b-gray-300">
         {/* RIGHT */}
         <div className="flex items-center gap-12">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="text-2xl tracking-wide">Negina</div>
-          </Link>
+          <Logo />
 
           <ul className="hidden md:flex gap-6 items-center">
             {navLinks.map((item, index) => (

@@ -1,14 +1,14 @@
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import Container from "./Container";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
     <footer className="relative bg-[#FEF3C7] overflow-hidden pt-20 pb-10">
-
       <Container className="relative z-10">
-        <div className="block w-20 bg-white rounded-full shadow-md px-6 py-2 m-auto text-gray-800 font-medium mb-6">
-          logo
+        <div className="flex justify-center mb-6">
+          <Logo />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
